@@ -61,8 +61,9 @@ pipeline {
         stage('Login to ECR') {
             steps {
                 script {
-                    def loginCommand = sh(script: "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}", returnStdout: true).trim()
-                    sh loginCommand
+                    withAWS(credentials: 'jenkins-credential', region: 'us-east-1') {
+                        sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}'
+                    }
                 }
             }
         }
