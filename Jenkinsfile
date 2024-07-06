@@ -54,7 +54,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("${ECR_REPOSITORY}:${env.BUILD_ID}", "-f ./src/Dockerfile ./src")
+                    dockerapp = docker.build("${ECR_REGISTRY}/${ECR_REPOSITORY}:${env.BUILD_ID}", "-f ./src/Dockerfile ./src")
                 }
             }
         }
