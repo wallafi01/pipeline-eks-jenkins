@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh 'sudo apt-get update && sudo apt-get install -y unzip'
                 sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
-                sh 'unzip awscliv2.zip'
+                sh 'sudo unzip -o awscliv2.zip'
                 sh 'sudo ./aws/install'
             }
         }
