@@ -5,7 +5,7 @@ pipeline {
         stage ('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("fabricioveronez/web-live-app:${env.BUILD_ID}", "-f ./src/Dockerfile ./src")
+                    dockerapp = docker.build("wallafi/web-live-app:${env.BUILD_ID}", "-f ./src/Dockerfile ./src")
                 }
             }
         }
